@@ -1,10 +1,12 @@
 package com.junipersys.animations_transitions;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.transition.Explode;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,15 +23,13 @@ public class AlbumListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_list);
-        initTransitions();
+        setupTransitions();
 
         ButterKnife.bind(this);
         populate();
     }
 
-    private void initTransitions() {
-        getWindow().setExitTransition(null);
-        getWindow().setReenterTransition(null);
+    private void setupTransitions() {
     }
 
     interface OnVHClickedListener {
@@ -76,10 +76,13 @@ public class AlbumListActivity extends Activity {
                     @Override
                     public void onVHClicked(AlbumVH vh) {
                         int albumArtResId = albumArts[vh.getPosition() % albumArts.length];
-                        Intent intent = new Intent(AlbumListActivity.this, AlbumDetailActivity.class);
+                        Intent intent = new Intent(AlbumListActivity.this,
+                                AlbumDetailActivity.class);
                         intent.putExtra(AlbumDetailActivity.EXTRA_ALBUM_ART_RESID, albumArtResId);
 
-                        startActivity(intent);
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AlbumListActivity.this,
+                                vh.albumArt, "albumArt");
+                        startActivity(intent, options.toBundle());
                     }
                 });
             }

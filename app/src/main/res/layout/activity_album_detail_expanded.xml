@@ -2,7 +2,8 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"   >
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <RelativeLayout
         android:id="@+id/detail_container"
@@ -11,7 +12,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:id="@+id/album_art"
             android:src="@drawable/mean_something_kinder_than_wolves"
@@ -43,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/album_title"
                 android:layout_alignStart="@id/album_title"
-                android:textAppearance="?android:attr/textAppearance"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault"
                 android:text="@string/desc_album_artist"
                 android:id="@+id/artist" />
         </RelativeLayout>
@@ -82,7 +83,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceInverse"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault"
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
                 android:textStyle="bold"
@@ -92,10 +93,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceInverse"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault"
                 android:layout_marginEnd="20dp"
                 android:text="@string/track_time"
                 android:id="@+id/length" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/lyrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/track_panel"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/lyrics"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
     </RelativeLayout>
+
+
 </ScrollView>
